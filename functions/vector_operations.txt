@@ -1,0 +1,44 @@
+ a  = 
+
+   1.
+
+
+--> // Given vectors a = 3i+5j-k
+
+--> // b = 2i+2j+3k
+
+--> a = [3, 5, -1]
+ a  = 
+
+   3.   5.  -1.
+
+
+--> b = [2, 2, 3]
+ b  = 
+
+   2.   2.   3.
+
+
+--> a_magnitude = norm(a)
+ a_magnitude  = 
+
+   5.9160798
+
+
+--> cross_product = cross(a,b)
+ cross_product  = 
+
+   17.  -11.  -4.
+
+
+--> cross_product_b = cross(b,a)
+ cross_product_b  = 
+
+  -17.   11.   4.
+
+
+--> close()
+
+--> clc
+
+--> exit
