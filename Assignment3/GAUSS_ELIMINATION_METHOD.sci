@@ -10,10 +10,10 @@ function [X]=GAUSS_ELIMINATION_METHOD(A,B)
 	// Check whether the size of A and size of B are compatible
 	if (n<>r) then
     	disp("Error: Matrix A and Vector B are of incompatible sizes")
-  end
+    end
     
     // Create the Augmented Matrix C
-    C = [B A]
+    C = [A B]
     
     // Elementary Elimination Method to reduce the Augmented matrix C..
     // to upper triangular matrix
@@ -21,20 +21,27 @@ function [X]=GAUSS_ELIMINATION_METHOD(A,B)
     for i = 1:n-1
     	for j = i+1:n
         	C(j,:) = C(j,:) - C(i,:)*(C(j,i)/C(i,i))
-      end
-		  disp(C)
-	  end
-    
+        end
+		
+	end
+    disp(C)
     X(n) = C(n,n+1)/C(n,n)
-    
+    disp(X(n))
     for i = n-1:-1:1
     	S = 0
         for j = i+1:n
-        	S = X(j)*C(i,j+1)
-          X(i) = (C(i,n+1)-S)/C(i,i)
-		  end
-	  end
+        	S = X(j)*C(i,j)
+            X(i) = (C(i,n+1)-S)/C(i,i)
+		end
+	end
     
-    disp(X)
+    //disp(X)
     
 endfunction
+
+A = [6,1,-6,-5; 2, 2, 3, 2; 4,-3, 0, 1; 0, 2, 0, 1];
+disp(A,"A=")
+B = [6; -2; -7; 0];
+disp(B, "B=")
+X = GAUSS_ELIMINATION_METHOD(A,B);
+disp(X)
