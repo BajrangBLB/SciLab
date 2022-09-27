@@ -20,20 +20,23 @@ function [X]=GAUSS_ELIMINATION_METHOD(A,B)
     
     for i = 1:n-1
     	for j = i+1:n
-        	C(j,:) = C(j,:) - C(i,:)*(C(j,i)/C(i,i))
+        	m(j,i) = -C(j,i)/C(i,i);
+            C(j,:) = C(j,:) + m(j,i) * C(i,:);
         end
 		
 	end
     disp(C)
-    X(n) = C(n,n+1)/C(n,n)
-    disp(X(n))
+    X(n,1) = C(n,n+1)/C(n,n)
+    disp(X)
     for i = n-1:-1:1
-    	S = 0
+    	
         for j = i+1:n
-        	S = X(j)*C(i,j)
-            X(i) = (C(i,n+1)-S)/C(i,i)
+        
+            X(i) = (C(i,n+1)-C(j,j+1:n)*X(j+1:n,1))/C(i,i)
 		end
 	end
+    
+    
     
     //disp(X)
     
